@@ -1,1 +1,148 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@300&display=swap");
+
+:root {
+  --main-color: #770aad;
+  --light-color: #f0f3f2;
+  --shadow: rgba(145, 158, 171, 0.2) 0px 2px 4px -1px,
+    rgba(145, 158, 171, 0.14) 0px 4px 5px 0px,
+    rgba(145, 158, 171, 0.12) 0px 1px 10px 0px;
+  --font-family: "Encode Sans Expanded", sans-serif;
+  --rating-color: #ffc908;
+}
+.button-border{
+  border-radius: 5px;
+  border: solid 1px  var(--main-color);
+  margin: 5px;
+}
+body {
+  font-family: var(--font-family) !important;
+}
+
+.nav-link {
+  transition: unset !important;
+}
+.active-link {
+  background-color: var(--main-color) !important;
+  color: var(--light-color) !important;
+  border-radius: 5px;
+}
+
+.rating-color {
+  color: var(--rating-color);
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+a,
+a:hover {
+  color: black;
+  text-decoration: none;
+}
+
+.product {
+  border-radius: 5px;
+  border: solid 1px var(--main-color);
+  overflow: hidden;
+}
+
+
+.product:hover {
+  box-shadow: 0 0 10px #bd119268;
+}
+
+.product .btn-main{
+  transform: translateY(150%);
+  transition: .7s;
+}
+.product:hover .btn-main{
+  transform: translateY(0);
+}
+
+.font-sm {
+  font-size: 12px;
+}
+.text-main {
+  color: var(--main-color);
+}
+.bg-main {
+  background-color: var(--main-color) !important;
+}
+.bg-main-light {
+  background-color: var(--light-color) !important;
+}
+.btn-main {
+  background-color: var(--main-color);
+  padding: 7px 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.5s;
+}
+.btn-main:disabled {
+  cursor: not-allowed;
+  background-color: #ccc;
+}
+.btn-main:disabled:hover {
+  background-color: #ccc;
+}
+.btn-main:hover {
+  background-color: #bd11ba;
+}
+
+/* Adjusted loader for submit button */
+.loader {
+  width: 20px;              /* Reduced width for button compatibility */
+  height: 20px;             /* Reduced height for button compatibility */
+  display: inline-block;
+  position: relative;
+  border: 2px solid #FFF;
+  box-sizing: border-box;
+  animation: rotation 2s linear infinite;
+  vertical-align: middle;   /* Aligns with button text */
+  margin-right: 6px;        /* Optional: spacing for button text */
+}
+
+.loader::after,
+.loader::before {
+  content: '';  
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  border: 2px solid #ff00f7;
+  width: 16px;              /* Inner circle width, adjusted for size */
+  height: 16px;             /* Inner circle height, adjusted for size */
+  animation: rotationBack 1.5s linear infinite;
+  transform-origin: center center;
+}
+
+.loader::before {
+  width: 10px;              /* Inner ring width, adjusted for size */
+  height: 10px;             /* Inner ring height, adjusted for size */
+  border-color: #FFF;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} 
+
+@keyframes rotationBack {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+/* end loader */

@@ -1,0 +1,78 @@
+<section class="bg-main-light p-4 rounded my-3 w-75 mx-auto">
+    <h1>register Now</h1>
+
+    <form  [formGroup]="registerForm " (ngSubmit)="handleForm()">
+        <div class="mb-2">
+
+            <label for="name">name :</label>
+            <input #inputName formControlName="name" type="text" id="name" class="form-control">
+        
+            <div  *ngIf="registerForm.get('name')?.errors &&  (registerForm.get('name')?.touched || inputName.value.length > 0 )"
+            class="alert alert-danger" 
+            >
+        <small *ngIf="registerForm.get('name')?.getError('required')">Name is Required</small>
+        <small *ngIf="registerForm.get('name')?.getError('minlength')">Name min Length 3 characters</small>
+        <small *ngIf="registerForm.get('name')?.getError('maxlength')">Name max Length 20 characters</small>
+        </div>
+
+        </div>
+        <div class="mb-2">
+
+            <label for="email">email :</label>
+            <input #inputEmail formControlName="email" type="email" id="email" class="form-control">
+            <div  *ngIf="registerForm.get('email')?.errors &&  (registerForm.get('email')?.touched || inputEmail.value.length > 0 )"
+            class="alert alert-danger" 
+            >
+        <small *ngIf="registerForm.get('email')?.getError('required')">Email is Required</small>
+        <small *ngIf="registerForm.get('email')?.getError('email')">Email min Length 3 characters</small>
+        </div>
+
+        </div>
+        <div class="mb-2">
+       <label for="password">password :</label>
+            <input #inputPassword formControlName="password" type="password" id="password" class="form-control">
+            <div  *ngIf="registerForm.get('password')?.errors &&  (registerForm.get('password')?.touched || inputPassword.value.length > 0 )"
+            class="alert alert-danger" 
+            >
+        <small *ngIf="registerForm.get('password')?.getError('required')">password is Required</small>
+        <small *ngIf="registerForm.get('password')?.getError('mismatch')"> password must start with upperCase then from 6 to 10
+        </small>
+        </div>
+
+        </div>
+        <div class="mb-2">rePassword
+            <label for="rePassword">rePassword :</label>
+            <input #inputRePassword formControlName="rePassword" type="password" id="rePassword" class="form-control">
+       
+            <div  *ngIf="registerForm.get('rePassword')?.errors &&  (registerForm.get('rePassword')?.touched || inputRePassword.value.length > 0 )"
+            class="alert alert-danger" 
+            >
+        <small *ngIf="registerForm.get('rePassword')?.getError('required')">confirmation Password is Required</small>
+        <small *ngIf="registerForm.get('rePassword')?.getError('pattern')"> confirmation Password must start with upperCase then from 6 to 10
+        </small>
+        </div>
+
+
+        </div>
+        <div class="mb-2">
+
+            <label for="phone">phone :</label>
+            <input #inputPhone formControlName="phone" type="tel" id="phone" class="form-control">
+       
+            <div  *ngIf="registerForm.get('phone')?.errors &&  (registerForm.get('phone')?.touched || inputPhone.value.length > 0 )"
+            class="alert alert-danger" 
+            >
+        <small *ngIf="registerForm.get('phone')?.getError('required')">phone is Required</small>
+        <small *ngIf="registerForm.get('phone')?.getError('pattern')"> accept only egypt phone numbers
+        </small>
+        </div>
+
+       
+        </div>
+        <button [disabled]="registerForm.invalid" (click)="handleForm()" class="btn-main ms-auto d-block ">     
+            <span *ngIf="isLoading" class="loader"></span>
+            Register</button>
+        <p *ngIf="msgErr" class="alert alert-danger">{{msgErr}}</p>
+   
+</form>
+</section>
