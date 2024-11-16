@@ -27,8 +27,6 @@ import { ToastrModule } from 'ngx-toastr';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { AllordersComponent } from './components/allorders/allorders.component';
 import { MyHttpInterceptor } from './my-http.interceptor';
-import { UpdatepasswordComponent } from './settings/updatepassword/updatepassword.component';
-import { ForgetpasswordComponent } from './settings/forgetpassword/forgetpassword.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,8 +48,6 @@ import { ForgetpasswordComponent } from './settings/forgetpassword/forgetpasswor
     SearchPipe,
     CheckoutComponent,
     AllordersComponent,
-    UpdatepasswordComponent,
-    ForgetpasswordComponent
   ],
   imports: [
     BrowserModule,
