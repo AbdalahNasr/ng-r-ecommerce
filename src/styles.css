@@ -192,9 +192,6 @@ a:hover {
   color: rgb(255, 255, 255);
   font-size: 1.2em;
 }
-input{
-  margin: 20px;
-}
 .field {
   display: flex;
   align-items: center;
@@ -207,6 +204,7 @@ input{
   color: white;
   background-color: #171717;
   box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+  margin: 20px;
 }
 
 .input-icon {
