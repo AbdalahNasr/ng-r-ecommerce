@@ -92,11 +92,17 @@
     
             <div class="btn">
               <button class="button1" [disabled]="loginForm.invalid" (click)="handleForm()" >
+                <span *ngIf="isLoading" class="loader"></span>
+
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Login&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               </button>
-              <button class="button2">Sign Up</button>
+              <button class="button2">
+                <span *ngIf="isLoading" class="loader"></span>
+
+                Sign Up</button>
             </div>
-            <button class="button3">Forgot Password</button>
+              <button class="button3">
+                Forgot Password</button>
           </form>
         </div>
 </section>
