@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , HostListener  } from '@angular/core';
 import { Router } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { ToastrService } from 'ngx-toastr';
@@ -89,6 +89,18 @@ ngOnInit(): void {
         this.categories = res.data;
       }
     })
+}
+// scrolling
+isButtonVisible = false;
+
+@HostListener('window:scroll', [])
+onWindowScroll() {
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+  this.isButtonVisible = scrollTop > 100; // Show the button after scrolling 100px
+}
+
+scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' }); // Smooth scroll to top
 }
 
 }

@@ -17,28 +17,30 @@ import { AllordersComponent } from './components/allorders/allorders.component';
 
 const routes: Routes = [
   {path:'',
-    canActivate:[authGuard]
-    ,component:BlankLayoutComponent,
+    canActivate:[authGuard],
+    component:BlankLayoutComponent,
     children:[  
       {path:'',redirectTo:'home',pathMatch:'full'},
       {path:'home',component:HomeComponent},
       {path:'cart',component:CartComponent},
-      {path:'settings', loadChildren:()=>import('./settings/settings.module').then((m)=>m.SettingsModule)},
       {path:'products',component:ProductsComponent},
       {path:'checkout/:id',component:CheckoutComponent},
       {path:'details/:id',component:DetailsComponent}, // redirect with parametar(id)
       {path:'brands',component:BrandsComponent},
       {path:'categories',component:CategoriesComponent},
       {path:'allorders',component:AllordersComponent
-
+        
       }
-       
+      
     ]
   },
   {path:'',component:AuthLayoutComponent , 
+    
     children:[
+      {path:'settings', loadChildren:()=>import('./settings/settings.module').then((m)=>m.SettingsModule)},
       {path:'login',component:LoginComponent},
       {path:'register',component:RegisterComponent},
+
 
     ]
 
