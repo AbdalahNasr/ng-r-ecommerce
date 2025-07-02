@@ -27,6 +27,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { AllordersComponent } from './components/allorders/allorders.component';
 import { MyHttpInterceptor } from './my-http.interceptor';
+import { OrderSummaryComponent } from './components/order-summary/order-summary.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +49,7 @@ import { MyHttpInterceptor } from './my-http.interceptor';
     SearchPipe,
     CheckoutComponent,
     AllordersComponent,
+    OrderSummaryComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,7 +61,7 @@ import { MyHttpInterceptor } from './my-http.interceptor';
     FormsModule,
     ToastrModule.forRoot()
 
-    
+
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: MyHttpInterceptor, multi: true}

@@ -1,0 +1,26 @@
+<div class="rounded-3xl border-2 border-neon-blue p-8 bg-gradient-to-br from-neon-bg-dark to-[#2a1a3c] shadow-neon w-[350px] h-[500px] flex flex-col">
+  <!-- Product List (scrollable) -->
+  <div class="flex-1 overflow-y-auto mb-4">
+    <div *ngFor="let item of items" class="flex items-center gap-4 mb-3">
+      <img [src]="item.product.imageCover" [alt]="item.product.title" class="w-20 h-20 object-contain neon-img" />
+      <div>
+        <div class="text-white font-bold">{{item.product.title}}</div>
+        <div class="text-neon-green font-bold">{{item.price | currency:'EGP'}}</div>
+        <div class="text-white">x{{item.count}}</div>
+      </div>
+      <div class="ml-auto text-neon-green font-bold">{{item.price * item.count | currency:'EGP'}}</div>
+    </div>
+  </div>
+  <!-- Totals Bar (fixed at bottom) -->
+  <div class="shrink-0">
+    <div class="flex justify-between text-white mb-1"><span>Subtotal</span><span>{{subtotal | currency:'EGP'}}</span></div>
+    <div class="flex justify-between text-white mb-1"><span>Delivery</span><span>{{delivery | currency:'EGP'}}</span></div>
+    <div class="flex justify-between text-white mb-1"><span>VAT (14%)</span><span>{{vat | currency:'EGP'}}</span></div>
+    <hr class="my-2 border-neon-blue opacity-40" />
+    <div class="flex justify-between text-lg font-bold"><span class="text-white">TOTAL</span><span class="text-neon-green">{{total | currency:'EGP'}}</span></div>
+    <button class="pay-btn btn-lg border-2 border-neon-purple bg-transparent font-bold text-lg w-full flex items-center justify-center gap-2 text-neon-blue rounded-full hover:bg-neon-blue hover:text-white hover:border-neon-blue mt-6">
+      <span class="btn-text">Pay</span>
+      <img src="assets/images/visa-1.svg" alt="Visa" class="h-6 ml-2" />
+    </button>
+  </div>
+</div>

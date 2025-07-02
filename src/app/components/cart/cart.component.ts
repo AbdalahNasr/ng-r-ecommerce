@@ -7,6 +7,7 @@ import { CartService } from 'src/app/shared/services/cart.service';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
+  hoveredIndex: number | null = null;
 
   constructor( private _CartService:CartService){}
 cartDetails:any= {};
@@ -20,7 +21,7 @@ removeCartItem(id:string):void{
     error:(error)=>{
       console.log(error);
       }
-      })  
+      })
 }
 
 
@@ -38,7 +39,7 @@ removeCartItem(id:string):void{
 
   changeCount(id:string,count:number):void{
     if (count > 0) {
-      
+
       this._CartService.updateCartProduct(id,count).subscribe({
         next:(response)=>{
           console.log(response.data);
@@ -47,8 +48,8 @@ removeCartItem(id:string):void{
           error:(error)=>{
             console.log(error);
           }
-          }) 
+          })
     }
   }
-  
+
 }

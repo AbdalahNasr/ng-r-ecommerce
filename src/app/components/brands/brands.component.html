@@ -1,1 +1,14 @@
-<p>brands works!</p>
+<section class="container my-4">
+  <h2 class="mb-4">Our Brands</h2>
+  <div class="row">
+    <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-4" *ngFor="let brand of brands">
+      <div class="card h-100 shadow-sm border-0 text-center p-2">
+        <img [src]="brand.logo" class="card-img-top mx-auto" [alt]="brand.name" style="max-height: 80px; object-fit: contain; width: auto;">
+        <div class="card-body p-2">
+          <h5 class="card-title mb-0" style="font-size: 1rem;">{{ brand.name }}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Mock data for demo; replace with real data from service in TS file -->

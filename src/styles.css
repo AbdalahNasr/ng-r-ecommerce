@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* You can add global styles to this file, and also import other style files */
 @import url("https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@300&display=swap");
 
@@ -9,6 +13,16 @@
     rgba(145, 158, 171, 0.12) 0px 1px 10px 0px;
   --font-family: "Encode Sans Expanded", sans-serif;
   --rating-color: #ffc908;
+  --neon-blue: #00f0ff;
+  --neon-purple: #a259ff;
+  --neon-pink: #ff00e6;
+  --neon-cyan: #00fff7;
+  --neon-green: #00ffb2;
+  --neon-bg-dark: #18192a;
+  --glass-bg: rgba(24, 25, 42, 0.7);
+  --glass-border: rgba(160, 89, 255, 0.3);
+  --neon-shadow: 0 0 24px 4px var(--neon-blue), 0 0 48px 8px var(--neon-purple);
+  --neon-font: 'Orbitron', 'Encode Sans Expanded', 'Segoe UI', Arial, sans-serif;
 }
 .button-border{
   border-radius: 5px;
@@ -19,6 +33,11 @@ body {
   background-color: #212121;
   color: white;
   font-family: var(--font-family) !important;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #18192a 0%, #2a1a3c 100%) fixed;
+  color: #eaf6fb;
+  font-family: var(--neon-font), sans-serif;
+  letter-spacing: 0.02em;
 }
 
 .nav-link {
@@ -108,7 +127,7 @@ a:hover {
 
 .loader::after,
 .loader::before {
-  content: '';  
+  content: '';
   box-sizing: border-box;
   position: absolute;
   left: 0;
@@ -137,7 +156,7 @@ a:hover {
   100% {
     transform: rotate(360deg);
   }
-} 
+}
 
 @keyframes rotationBack {
   0% {
@@ -214,7 +233,7 @@ a:hover {
 }
 
 .input-field {
-  
+
   background: none;
   border: none;
   outline: none;
@@ -361,3 +380,266 @@ a:hover {
   background: rgb(181, 160, 255); /* Color of the scrollbar thumb on hover */
 }
 /* end of scroll style */
+
+/* Neon Headings */
+.neon-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--neon-blue);
+  text-shadow: 0 0 16px var(--neon-blue), 0 0 32px var(--neon-purple);
+  letter-spacing: 0.04em;
+}
+
+.neon-subtitle {
+  color: var(--neon-cyan);
+  font-size: 1.2rem;
+  text-shadow: 0 0 8px var(--neon-cyan);
+}
+
+/* Neon Button */
+.neon-btn {
+  background: transparent;
+  color: var(--neon-blue);
+  border: 2px solid var(--neon-blue);
+  border-radius: 2em;
+  padding: 0.6em 2em;
+  font-size: 1.1rem;
+  font-weight: 600;
+  box-shadow: 0 0 8px var(--neon-blue);
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+.neon-btn:hover, .neon-btn:focus {
+  background: var(--neon-blue);
+  color: #18192a; /* or white, depending on your preference */
+  box-shadow: 0 0 24px 4px var(--neon-blue), 0 0 48px 8px var(--neon-purple);
+}
+
+/* Glassy Card with Neon Border */
+.neon-card {
+  background: var(--glass-bg);
+  border: 2px solid var(--glass-border);
+  border-radius: 1.5em;
+  box-shadow: 0 0 16px 2px var(--neon-purple);
+  transition: box-shadow 0.3s, border-color 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.neon-card:hover {
+  border-color: var(--neon-blue);
+  box-shadow: var(--neon-shadow);
+}
+
+/* Neon Glow for Card Images */
+.neon-img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: contain;
+  filter: drop-shadow(0 0 16px var(--neon-blue)) drop-shadow(0 0 32px var(--neon-purple));
+  transition: filter 0.2s, transform 0.2s;
+}
+.neon-card:hover .neon-img {
+  filter: drop-shadow(0 0 32px var(--neon-cyan)) drop-shadow(0 0 48px var(--neon-pink));
+  transform: scale(1.05);
+}
+
+/* Neon Border for Inputs */
+.neon-input {
+  background: transparent;
+  border: 2px solid var(--neon-blue);
+  color: var(--neon-blue);
+  border-radius: 1em;
+  padding: 0.5em 1em;
+  font-size: 1rem;
+  box-shadow: 0 0 8px var(--neon-blue);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.neon-input:focus {
+  border-color: var(--neon-purple);
+  box-shadow: 0 0 16px var(--neon-purple);
+  outline: none;
+}
+
+/* Neon Divider */
+.neon-divider {
+  border: none;
+  border-top: 2px solid var(--neon-blue);
+  margin: 2em 0;
+  opacity: 0.4;
+}
+
+/* Navbar Neon */
+.neon-navbar {
+  background: rgba(24, 25, 42, 0.85);
+  border-bottom: 2px solid var(--neon-purple);
+  box-shadow: 0 2px 24px 0 var(--neon-blue);
+  font-family: var(--neon-font);
+}
+
+.neon-navbar .nav-link, .neon-navbar .navbar-brand {
+  color: var(--neon-blue) !important;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  transition: color 0.2s, text-shadow 0.2s;
+}
+.neon-navbar .nav-link:hover, .neon-navbar .navbar-brand:hover {
+  color: var(--neon-pink) !important;
+  text-shadow: 0 0 8px var(--neon-pink);
+}
+
+/* Utility */
+.bg-glass {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+
+/* pay button styling */
+
+.pay-btn {
+  position: relative;
+  padding: 12px 24px;
+  font-size: 16px;
+  /* border: none;
+  border-radius: 8px; */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+}
+
+.pay-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.icon-container {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+
+.icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  color: #2263c5;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.default-icon {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Hover animations */
+.pay-btn:hover .icon {
+  animation: none;
+}
+
+.pay-btn:hover .wallet-icon {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.pay-btn:hover .card-icon {
+  animation: iconRotate 2.5s infinite;
+  animation-delay: 0s;
+}
+
+.pay-btn:hover .payment-icon {
+  animation: iconRotate 2.5s infinite;
+  animation-delay: 0.5s;
+}
+
+.pay-btn:hover .dollar-icon {
+  animation: iconRotate 2.5s infinite;
+  animation-delay: 1s;
+}
+
+.pay-btn:hover .check-icon {
+  animation: iconRotate 2.5s infinite;
+  animation-delay: 1.5s;
+}
+
+/* Active state - show only checkmark */
+.pay-btn:active .icon {
+  animation: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.pay-btn:active .check-icon {
+  animation: checkmarkAppear 0.6s ease forwards;
+  visibility: visible;
+}
+
+.btn-text {
+  font-weight: 600;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+
+@keyframes iconRotate {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px) scale(0.5);
+  }
+  5% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+  }
+  15% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+  }
+  20% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px) scale(0.5);
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px) scale(0.5);
+  }
+}
+
+@keyframes checkmarkAppear {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) rotate(-45deg);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.2) rotate(0deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* end of pay button styling */
+
+
+
+
+
+
+.text-neon-blue { color: var(--neon-blue); }
+.text-neon-purple { color: var(--neon-purple); }
+.text-neon-pink { color: var(--neon-pink); }
+.text-neon-cyan { color: var(--neon-cyan); }
+.text-neon-green { color: var(--neon-green); }

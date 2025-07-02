@@ -14,12 +14,14 @@ import { authGuard } from './shared/guards/auth.guard';
 import { DetailsComponent } from './components/details/details.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { AllordersComponent } from './components/allorders/allorders.component';
+import { UpdatepasswordComponent } from './settings/updatepassword/updatepassword.component';
+import { ForgetpasswordComponent } from './settings/forgetpassword/forgetpassword.component';
 
 const routes: Routes = [
   {path:'',
     canActivate:[authGuard],
     component:BlankLayoutComponent,
-    children:[  
+    children:[
       {path:'',redirectTo:'home',pathMatch:'full'},
       {path:'home',component:HomeComponent},
       {path:'cart',component:CartComponent},
@@ -29,19 +31,19 @@ const routes: Routes = [
       {path:'brands',component:BrandsComponent},
       {path:'categories',component:CategoriesComponent},
       {path:'allorders',component:AllordersComponent
-        
+
       }
-      
+
     ]
   },
-  {path:'',component:AuthLayoutComponent , 
-    
+  {path:'',component:AuthLayoutComponent ,
+
     children:[
       {path:'settings', loadChildren:()=>import('./settings/settings.module').then((m)=>m.SettingsModule)},
       {path:'login',component:LoginComponent},
       {path:'register',component:RegisterComponent},
-
-
+      {path:'update',component:UpdatepasswordComponent},
+      {path:'forget',component:ForgetpasswordComponent},
     ]
 
   },

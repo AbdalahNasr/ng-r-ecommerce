@@ -1,39 +1,30 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-      <a class="navbar-brand" routerLink="home">
-        <img src="./assets/images/freshcart-logo.svg" alt="" srcset="">
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link "><i class="fab fa-instagram"></i> </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link "><i class="fab fa-facebook"></i> </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link "><i class="fab fa-tiktok"></i> </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link "><i class="fab fa-twitter"></i> </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link "><i class="fab fa-linkedin-in"></i> </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link "><i class="fab fa-youtube"></i> </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-capitalize" routerLink="login" routerLinkActive="active-link">login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-capitalize" routerLink="register" routerLinkActive="active-link">register</a>
-          </li>
-
-        </ul>
-      </div>
+<nav class="w-full bg-glass neon-navbar shadow-neon fixed top-0 left-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
+    <!-- Logo -->
+    <a routerLink="/home" class="flex items-center gap-2">
+      <img src="./assets/images/freshcart-logo.svg" alt="FreshCart Logo" class="h-8 w-8">
+      <span class="text-2xl font-bold text-neon-green drop-shadow-[0_0_8px_#00ffb2]">FreshCart</span>
+    </a>
+    <!-- Nav Links -->
+    <div class="flex items-center gap-6">
+      <a routerLink="/home" routerLinkActive="text-neon-pink" class="text-neon-blue font-semibold hover:text-neon-pink transition">Home</a>
+      <a routerLink="/cart" routerLinkActive="text-neon-pink" class="text-neon-blue font-semibold hover:text-neon-pink transition">Cart</a>
+      <a routerLink="/products" routerLinkActive="text-neon-pink" class="text-neon-blue font-semibold hover:text-neon-pink transition">Products</a>
+      <a routerLink="/categories" routerLinkActive="text-neon-pink" class="text-neon-blue font-semibold hover:text-neon-pink transition">Categories</a>
+      <a routerLink="/brands" routerLinkActive="text-neon-pink" class="text-neon-blue font-semibold hover:text-neon-pink transition">Brands</a>
+      <a routerLink="/settings" routerLinkActive="text-neon-pink" class="text-neon-blue font-semibold hover:text-neon-pink transition">Settings</a>
     </div>
-  </nav>
+    <!-- Social Icons & Auth -->
+    <div class="flex items-center gap-4">
+      <a href="#" class="text-neon-blue hover:text-neon-pink text-xl"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="text-neon-blue hover:text-neon-pink text-xl"><i class="fab fa-facebook"></i></a>
+      <a href="#" class="text-neon-blue hover:text-neon-pink text-xl"><i class="fab fa-tiktok"></i></a>
+      <a href="#" class="text-neon-blue hover:text-neon-pink text-xl"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="text-neon-blue hover:text-neon-pink text-xl"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" class="text-neon-blue hover:text-neon-pink text-xl"><i class="fab fa-youtube"></i></a>
+      <a routerLink="/login" routerLinkActive="text-neon-pink" class="ml-4 neon-btn px-4 py-1">Login</a>
+      <a routerLink="/register" routerLinkActive="text-neon-pink" class="neon-btn px-4 py-1">Register</a>
+    </div>
+  </div>
+</nav>
+<div class="h-16"></div> <!-- Spacer for fixed navbar -->

@@ -9,13 +9,15 @@ import { CartService } from 'src/app/shared/services/cart.service';
   styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent implements OnInit{
+  cartItems: any[] = [];
+  phone: string = '';
+  city: string = '';
+  message: string = '';
+
   constructor(private _FormBuilder:FormBuilder,
     private _ActivatedRoute:ActivatedRoute,
     private  _CartService:CartService
-
   ){}
-
-
 
   checkout:FormGroup = this._FormBuilder.group({
     details:[''],
@@ -23,39 +25,51 @@ export class CheckoutComponent implements OnInit{
     city:['']
   })
 
-cartId:any = '' ;
+  cartId:any = '' ;
 
-
-ngOnInit(): void {
-  this._ActivatedRoute.paramMap.subscribe({
-    next:(params) => {
-      console.log(params.get('id'));
-      this.cartId = params.get('id');
-
+  ngOnInit(): void {
+    this._ActivatedRoute.paramMap.subscribe({
+      next:(params) => {
+        this.cartId = params.get('id');
       }
-  })
-    
-}
+    });
+    this._CartService.getUserCart().subscribe({
+      next: (res) => {
+        if (res.data && res.data.products) {
+          this.cartItems = res.data.products;
+        }
+      }
+    });
+  }
 
   handleForm():void{
     console.log(this.checkout.value);  // details {}
     this._CartService.checkOut(this.cartId,this.checkout.value).subscribe({
-      next:(res) => { 
-
+      next:(res) => {
         console.log(res);
         if (res.status == "success") {
           window.open(res.session.url,'_self')
-          
         }
-
-        },
-        error:(err) => {
-          console.log(err);
-          }
-          })
-    
+      },
+      error:(err) => {
+        console.log(err);
+      }
+    })
   }
 
-
-
+  changeCount(productId: string, newCount: number) {
+    if (newCount > 0) {
+      this._CartService.updateCartProduct(productId, newCount).subscribe({
+        next: (res) => {
+          if (res.data && res.data.products) {
+            // Find the updated product in the response and update cartItems
+            this.cartItems = res.data.products;
+          }
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      });
+    }
+  }
 }

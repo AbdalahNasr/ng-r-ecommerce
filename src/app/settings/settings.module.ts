@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { SettingsRoutingModule } from './settings-routing.module';
 import { UpdatepasswordComponent } from './updatepassword/updatepassword.component';
 import { ForgetpasswordComponent } from './forgetpassword/forgetpassword.component';
-
 
 @NgModule({
   declarations: [
@@ -13,7 +13,8 @@ import { ForgetpasswordComponent } from './forgetpassword/forgetpassword.compone
   ],
   imports: [
     CommonModule,
-    SettingsRoutingModule
+    SettingsRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class SettingsModule { }
