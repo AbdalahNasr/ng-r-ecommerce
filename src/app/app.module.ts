@@ -28,6 +28,8 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { AllordersComponent } from './components/allorders/allorders.component';
 import { MyHttpInterceptor } from './my-http.interceptor';
 import { OrderSummaryComponent } from './components/order-summary/order-summary.component';
+import { LoaderComponent } from './shared/components/loader/loader.component';
+import { CategoryProductsComponent } from './components/category-products/category-products.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,6 +52,8 @@ import { OrderSummaryComponent } from './components/order-summary/order-summary.
     CheckoutComponent,
     AllordersComponent,
     OrderSummaryComponent,
+    LoaderComponent,
+    CategoryProductsComponent,
   ],
   imports: [
     BrowserModule,

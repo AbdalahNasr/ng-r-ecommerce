@@ -9,19 +9,19 @@
         'border-neon-purple shadow-neon': hoveredIndex !== i
       }"
       class="relative rounded-3xl bg-cover bg-center border-2 aspect-square flex flex-col justify-end items-center transition-all duration-300"
-      [ngStyle]="{'background-image': 'url(' + product.image + ')'}">
+      [ngStyle]="{'background-image': 'url(' + product.imageCover + ')'}">
 
       <!-- Spacer to ensure content is above the bottom -->
       <div class="flex-1"></div>
 
       <!-- Content at the bottom, always visible -->
       <div class="w-full flex flex-col items-center justify-end pb-6 z-10">
-        <h5 class="text-xl font-semibold text-neon-blue mb-2 text-center drop-shadow-lg">{{ product.name }}</h5>
+        <h5 class="text-xl font-semibold text-neon-blue mb-2 text-center drop-shadow-lg">{{ product.title }}</h5>
         <div class="flex items-center justify-center w-full">
           <span class="text-neon-green text-lg font-bold drop-shadow-lg">{{ product.price | currency:'EGP' }}</span>
           <button *ngIf="hoveredIndex === i"
             (click)="addToCart(product)"
-            class="ml-2 px-6 py-2 text-base font-bold rounded-full border-2 border-neon-blue  bg-opacity-60 text-neon-blue shadow-[0_0_16px_2px_#00f0ff] transition-all duration-300"
+            class="ml-2 w-36 h-10 px-0 py-0 text-base font-bold rounded-full border-2 border-neon-blue bg-opacity-60 text-neon-blue shadow-[0_0_16px_2px_#00f0ff] transition-all duration-300 flex items-center justify-center"
             tabindex="-1">
             <i class="fa fa-cart-plus mr-2"></i> Add to Cart
           </button>

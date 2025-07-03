@@ -1,13 +1,13 @@
-<section class="container my-4">
-  <h2 class="mb-4">Categories</h2>
-  <div class="row">
-    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4" *ngFor="let category of categories">
-      <div class="card h-100 shadow-sm border-0">
-        <img [src]="category.image" class="card-img-top" [alt]="category.name" style="max-height: 120px; object-fit: cover;">
-        <div class="card-body">
-          <h5 class="card-title">{{ category.name }}</h5>
-          <p class="card-text text-muted" style="font-size: 0.95rem;">{{ category.description }}</p>
-        </div>
+<section class="max-w-7xl mx-auto py-8 px-4">
+  <h2 class="text-3xl font-bold text-center text-neon-green mb-8 drop-shadow-[0_0_8px_#00ffb2]">Categories</h2>
+  <div *ngIf="isLoading" class="flex justify-center items-center min-h-[120px]">
+    <span class="loader"></span>
+  </div>
+  <div *ngIf="!isLoading" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+    <div *ngFor="let category of categories">
+      <div class="rounded-2xl border-2 border-neon-blue bg-gradient-to-br from-neon-bg-dark to-[#2a1a3c] shadow-neon flex flex-col items-center p-4 transition-all duration-300 hover:border-neon-green hover:shadow-[0_0_24px_4px_#00ffb2] group cursor-pointer" (click)="goToCategory(category._id)">
+        <img [src]="category.image" [alt]="category.name" class="w-auto h-20 object-contain mb-3 drop-shadow-[0_0_8px_#00ffb2] group-hover:scale-105 transition-transform duration-300" />
+        <h5 class="text-neon-blue font-semibold text-center text-lg group-hover:text-neon-green transition">{{ category.name }}</h5>
       </div>
     </div>
   </div>

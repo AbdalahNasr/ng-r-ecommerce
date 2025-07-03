@@ -1,0 +1,17 @@
+<div class="max-w-7xl mx-auto py-8 px-4">
+  <h2 class="text-3xl font-bold text-center text-neon-green mb-8 drop-shadow-[0_0_8px_#00ffb2]">
+    {{ categoryName || 'Category Products' }}
+  </h2>
+  <div *ngIf="isLoading" class="text-center py-8">Loading...</div>
+  <div *ngIf="!isLoading && !products.length && errorMsg" class="text-center text-neon-pink py-8">{{ errorMsg }}</div>
+
+  <div *ngIf="!isLoading && products.length > 0" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div *ngFor="let product of products" class="neon-card p-4 rounded-lg shadow-lg">
+      <img [src]="product.imageCover" [alt]="product.title" class="w-full h-48 object-cover rounded mb-4" />
+      <h3 class="text-xl font-bold mb-2 neon-text">{{ product.title }}</h3>
+      <p class="mb-2">{{ product.price | currency }}</p>
+      <p class="text-sm text-gray-400">{{ product.category?.name }}</p>
+      <!-- Add more product details as needed -->
+    </div>
+  </div>
+</div>

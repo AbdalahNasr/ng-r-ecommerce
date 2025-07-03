@@ -16,6 +16,7 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { AllordersComponent } from './components/allorders/allorders.component';
 import { UpdatepasswordComponent } from './settings/updatepassword/updatepassword.component';
 import { ForgetpasswordComponent } from './settings/forgetpassword/forgetpassword.component';
+import { CategoryProductsComponent } from './components/category-products/category-products.component';
 
 const routes: Routes = [
   {path:'',
@@ -30,14 +31,11 @@ const routes: Routes = [
       {path:'details/:id',component:DetailsComponent}, // redirect with parametar(id)
       {path:'brands',component:BrandsComponent},
       {path:'categories',component:CategoriesComponent},
-      {path:'allorders',component:AllordersComponent
-
-      }
-
+      {path:'categories/:id',component:CategoryProductsComponent},
+      {path:'allorders',component:AllordersComponent}
     ]
   },
   {path:'',component:AuthLayoutComponent ,
-
     children:[
       {path:'settings', loadChildren:()=>import('./settings/settings.module').then((m)=>m.SettingsModule)},
       {path:'login',component:LoginComponent},
@@ -45,7 +43,6 @@ const routes: Routes = [
       {path:'update',component:UpdatepasswordComponent},
       {path:'forget',component:ForgetpasswordComponent},
     ]
-
   },
   { path: '**', component:NotfoundComponent  }
 ];

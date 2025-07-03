@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./nav-auth.component.css']
 })
 export class NavAuthComponent {
-
+  isMobileMenuOpen = false;
 }

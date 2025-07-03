@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-categories',
@@ -6,12 +8,29 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./categories.component.css']
 })
 export class CategoriesComponent implements OnInit {
-  categories = [
-    { name: 'Fruits', image: 'assets/images/assortment-citrus-fruits.png', description: 'Fresh and juicy fruits.' },
-    { name: 'Vegetables', image: 'assets/images/grocery-banner.png', description: 'Green and healthy vegetables.' },
-    { name: 'Beverages', image: 'assets/images/banner-4.jpeg', description: 'Refreshing drinks and beverages.' },
-    { name: 'Snacks', image: 'assets/images/slide-1.jpeg', description: 'Tasty snacks for all ages.' }
-  ];
-  constructor() { }
-  ngOnInit(): void { }
+  categories: any[] = [];
+  isLoading = true;
+
+  constructor(private http: HttpClient, private router: Router) { }
+
+  ngOnInit(): void {
+    this.http.get<any>('https://ecommerce.routemisr.com/api/v1/categories/')
+      .subscribe({
+        next: (res) => {
+          this.categories = res.data;
+          this.isLoading = false;
+        },
+        error: () => {
+          this.isLoading = false;
+        }
+      });
+  }
+
+  getCategoryById(id: string) {
+    return this.http.get<any>(`https://ecommerce.routemisr.com/api/v1/categories/${id}`);
+  }
+
+  goToCategory(id: string) {
+    this.router.navigate(['/categories', id]);
+  }
 }

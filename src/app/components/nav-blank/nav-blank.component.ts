@@ -7,6 +7,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
   styleUrls: ['./nav-blank.component.css']
 })
 export class NavBlankComponent {
+  isMobileMenuOpen = false;
 
   constructor(private _AuthService:AuthService){}
 

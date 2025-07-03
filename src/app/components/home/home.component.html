@@ -1,96 +1,99 @@
 <!-- main slider -->
-<section class="row g-0">
-    <div class="col-md-10">
-        <owl-carousel-o [options]="mainSlider">
-            <ng-template carouselSlide>
-                <img src="./assets/images/main-slider-1.jpeg" alt=""
-                height="400"
-                class="w-100">
-            </ng-template>  
-            <ng-template carouselSlide>
-                <img src="./assets/images/main-slider-2.jpeg" alt=""
-                height="400"
-                class="w-100">
-            </ng-template>  
-            <ng-template carouselSlide>
-                <img src="./assets/images/main-slider-3.jpeg" alt=""
-                height="400"
-                class="w-100">
-            </ng-template>  
-        </owl-carousel-o>
-    </div>
-    <div class="col-md-2">
-        <img src="./assets/images/slide-1.jpeg"
-        class="w-100"
-        height="200"
-        alt="">
-        <img  
-        height="200"
-        class="w-100"
-        src="./assets/images/slide-2.jpeg" alt="">
+<section class="max-w-7xl mx-auto py-6 px-2">
+    <div class="flex flex-col lg:flex-row gap-4">
+        <!-- Main Slider (Left, full width/height) -->
+        <div class="w-full lg:w-[72%]">
+            <owl-carousel-o [options]="mainSlider">
+                <ng-template carouselSlide>
+                    <div class="h-[350px] rounded-3xl border-4 border-neon-blue shadow-[0_0_32px_4px_#00f0ff] overflow-hidden bg-gradient-to-br from-neon-bg-dark via-[#221a3c] to-[#18192a]">
+                        <img src="./assets/images/main-slider-1.jpeg" alt="Main Slide 1"
+                            class="w-full h-full object-cover" />
+                    </div>
+                </ng-template>
+                <ng-template carouselSlide>
+                    <div class="h-[350px] rounded-3xl border-4 border-neon-blue shadow-[0_0_32px_4px_#00f0ff] overflow-hidden bg-gradient-to-br from-neon-bg-dark via-[#221a3c] to-[#18192a]">
+                        <img src="./assets/images/main-slider-2.jpeg" alt="Main Slide 2"
+                            class="w-full h-full object-cover" />
+                    </div>
+                </ng-template>
+                <ng-template carouselSlide>
+                    <div class="h-[350px] rounded-3xl border-4 border-neon-blue shadow-[0_0_32px_4px_#00f0ff] overflow-hidden bg-gradient-to-br from-neon-bg-dark via-[#221a3c] to-[#18192a]">
+                        <img src="./assets/images/main-slider-3.jpeg" alt="Main Slide 3"
+                            class="w-full h-full object-cover" />
+                    </div>
+                </ng-template>
+            </owl-carousel-o>
+        </div>
+        <!-- Right Column (2 images stacked) -->
+        <div class="w-full lg:w-[28%] flex flex-col gap-4">
+            <img src="./assets/images/slide-1.jpeg" alt="Slide 1"
+                class="w-full h-[170px] object-cover rounded-2xl border-2 border-neon-blue shadow-neon" />
+            <img src="./assets/images/slide-2.jpeg" alt="Slide 2"
+                class="w-full h-[170px] object-cover rounded-2xl border-2 border-neon-blue shadow-neon" />
+        </div>
     </div>
 </section>
+
 <!-- categories slider -->
 <section class="my-3">
-    <div><h4>Categories </h4> </div>
+    <div><h4 class="text-neon-green text-2xl font-bold mb-4">Categories</h4></div>
     <owl-carousel-o [options]="categoriesSliderOptions">
-
         <ng-container *ngFor="let item of categories">
             <ng-template carouselSlide>
-                <!-- item  -->
-                <div>
-                    <img [src]="item.image" class="w-100" height="270" [alt]="item.name ">
-                    <h3 class="h5">{{item.name}}</h3>
+                <div class="flex flex-col items-center justify-center p-2">
+                    <div class="rounded-2xl border-2 border-neon-blue bg-gradient-to-br from-neon-bg-dark to-[#2a1a3c] shadow-neon w-40 h-40 flex items-center justify-center mb-2">
+                        <img [src]="item.image" class="w-32 h-32 object-contain rounded-xl drop-shadow-[0_0_8px_#00ffb2]" [alt]="item.name">
+                    </div>
+                    <h3 class="text-neon-blue font-semibold text-center text-base mt-1">{{item.name}}</h3>
                 </div>
             </ng-template>
         </ng-container>
-
     </owl-carousel-o>
-    <!-- <div>Some tags after</div> -->
 </section>
 
 <!-- products -->
 
 <section class="my-4">
-    <h2>popular Products</h2>
+  <h2 class="text-4xl font-bold neon-title text-center mb-12">Popular Products</h2>
 
-<input type="search" placeholder="search..."
- class="form-control w-50 mx-auto my-3"
- [(ngModel)]="searchTerm"
- />
+  <input type="search" placeholder="search..."
+    class="form-control w-50 mx-auto my-3"
+    [(ngModel)]="searchTerm"
+  />
 
-    <div class="row g-4">
-
-        <div class="col-md-2" *ngFor="let item of products | search:searchTerm">
-            <div>
-                <div class="product">
-                    <div class=" p-2 cursor-pointer" [routerLink]="['/details', item._id]">
-
-                        <img class="w-100" [src]="item.imageCover" [alt]="item.title" srcset="">
-                        <h3 class="h6">{{item.category.name | uppercase | termtext:3}}</h3>
-                        <h4 class="h6">{{item.title | termtext:2}}</h4>
-
-                        <div class="d-flex align-items-center justify-content-between">
-                            <span>{{item.price | currency : "EGP"}} 
-                            </span>
-                            <div><i class="fas fa-star rating-color"><span
-                                        class="text-muted">{{item.ratingsAverage}}</span></i></div>
-                        </div>
-                    </div>
-                    <button (click)="addCart(item._id)" class="btn-main w-100 ">Add Product</button>
-                </div>
-            </div>
-        </div> 
-        
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 max-w-7xl mx-auto">
+    <div *ngFor="let item of products | search:searchTerm; let i = index"
+      (mouseenter)="hoveredIndex = i"
+      (mouseleave)="hoveredIndex = null"
+      [ngClass]="{
+        'border-neon-blue shadow-[0_0_32px_4px_#00f0ff,0_0_64px_8px_#a259ff]': hoveredIndex === i,
+        'border-neon-purple shadow-neon': hoveredIndex !== i
+      }"
+      class="relative rounded-3xl bg-cover bg-center border-2 aspect-square flex flex-col justify-end items-center transition-all duration-300 cursor-pointer"
+      [ngStyle]="{'background-image': 'url(' + item.imageCover + ')'}"
+      [routerLink]="['/details', item._id]">
+      <div class="flex-1"></div>
+      <div class="w-full flex flex-col items-center justify-end pb-6 z-10">
+        <h5 class="text-xl font-semibold text-neon-blue mb-2 text-center drop-shadow-lg">{{ item.title }}</h5>
+        <div class="flex items-center justify-center w-full">
+          <span class="text-neon-green text-lg font-bold drop-shadow-lg">{{ item.price | currency:'EGP' }}</span>
+          <button *ngIf="hoveredIndex === i"
+            (click)="$event.stopPropagation(); addCart(item._id)"
+            class="ml-2 w-36 h-10 px-0 py-0 text-base font-bold rounded-full border-2 border-neon-blue bg-opacity-60 text-neon-blue shadow-[0_0_16px_2px_#00f0ff] transition-all duration-300 flex items-center justify-center"
+            tabindex="-1">
+            <i class="fa fa-cart-plus mr-2"></i> Add to Cart
+          </button>
+        </div>
+      </div>
     </div>
-    <div class="d-flex justify-content-end">
-
-        <button class="button  " (click)="scrollToTop()">
-          <svg class="svgIcon" viewBox="0 0 384 512">
-            <path
-              d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"
-            ></path>
-          </svg>
-        </button>
-    </div>
+  </div>
+  <div class="d-flex justify-content-end mt-8">
+    <button class="button" (click)="scrollToTop()">
+      <svg class="svgIcon" viewBox="0 0 384 512">
+        <path
+          d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"
+        ></path>
+      </svg>
+    </button>
+  </div>
 </section>

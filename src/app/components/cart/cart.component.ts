@@ -8,6 +8,7 @@ import { CartService } from 'src/app/shared/services/cart.service';
 })
 export class CartComponent implements OnInit {
   hoveredIndex: number | null = null;
+  isCartLoading: boolean = true;
 
   constructor( private _CartService:CartService){}
 cartDetails:any= {};
@@ -30,9 +31,11 @@ removeCartItem(id:string):void{
         next:(res)=>{
           console.log(res.data);
           this.cartDetails=res.data // {totalCartPrice,products:[{count,price, product}]}
+          this.isCartLoading = false;
           },
           error:(err)=>{
             console.log(err);
+            this.isCartLoading = false;
             }
       })
   }

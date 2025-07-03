@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class UpdatepasswordComponent {
   updatePasswordForm: FormGroup;
   msgErr: string = '';
+  isLoading = false;
 
   constructor(private fb: FormBuilder) {
     this.updatePasswordForm = this.fb.group({

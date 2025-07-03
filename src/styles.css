@@ -112,41 +112,31 @@ a:hover {
   background-color: #bd11ba;
 }
 
-/* Adjusted loader for submit button */
+/* Neon glowing loader styles */
 .loader {
-  width: 20px;              /* Reduced width for button compatibility */
-  height: 20px;             /* Reduced height for button compatibility */
+  width: 24px;
+  height: 24px;
   display: inline-block;
   position: relative;
-  border: 2px solid #FFF;
-  box-sizing: border-box;
-  animation: rotation 2s linear infinite;
-  vertical-align: middle;   /* Aligns with button text */
-  margin-right: 6px;        /* Optional: spacing for button text */
 }
-
 .loader::after,
 .loader::before {
   content: '';
   box-sizing: border-box;
+  width: 24px;
+  height: 24px;
+  border: 2px solid #FFF;
   position: absolute;
   left: 0;
-  right: 0;
   top: 0;
-  bottom: 0;
-  margin: auto;
-  border: 2px solid #ff00f7;
-  width: 16px;              /* Inner circle width, adjusted for size */
-  height: 16px;             /* Inner circle height, adjusted for size */
-  animation: rotationBack 1.5s linear infinite;
-  transform-origin: center center;
+  animation: rotation 2s ease-in-out infinite alternate;
+  /* Neon blue glow */
+  box-shadow: 0 0 8px #00cfff, 0 0 16px #00cfff, 0 0 24px #00cfff;
 }
-
-.loader::before {
-  width: 10px;              /* Inner ring width, adjusted for size */
-  height: 10px;             /* Inner ring height, adjusted for size */
-  border-color: #FFF;
-  animation: rotation 1s linear infinite;
+.loader::after {
+  border-color: #00cfff;
+  animation-direction: alternate-reverse;
+  box-shadow: 0 0 8px #00cfff, 0 0 16px #00cfff, 0 0 24px #00cfff;
 }
 
 @keyframes rotation {
@@ -157,16 +147,6 @@ a:hover {
     transform: rotate(360deg);
   }
 }
-
-@keyframes rotationBack {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(-360deg);
-  }
-}
-/* end btn loader */
 
 /* form styling */
 
@@ -458,6 +438,16 @@ a:hover {
   border-color: var(--neon-purple);
   box-shadow: 0 0 16px var(--neon-purple);
   outline: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #1a1833 inset !important; /* Your neon/dark bg */
+  -webkit-text-fill-color: #00ffb2 !important; /* Your neon text color */
+  caret-color: #00ffb2 !important;
+  transition: background-color 5000s ease-in-out 0s;
 }
 
 /* Neon Divider */

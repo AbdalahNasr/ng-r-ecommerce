@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-brands',
@@ -6,14 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./brands.component.css']
 })
 export class BrandsComponent implements OnInit {
-  brands = [
-    { name: 'Brand A', logo: 'assets/images/freshcart-logo.svg' },
-    { name: 'Brand B', logo: 'assets/images/app-store.svg' },
-    { name: 'Brand C', logo: 'assets/images/google-store.svg' },
-    { name: 'Brand D', logo: 'assets/images/master.svg' },
-    { name: 'Brand E', logo: 'assets/images/visa.svg' },
-    { name: 'Brand F', logo: 'assets/images/visa-1.svg' }
-  ];
-  constructor() { }
-  ngOnInit(): void { }
+  brands: any[] = [];
+  isLoading = true;
+
+  constructor(private http: HttpClient) { }
+
+  ngOnInit(): void {
+    this.http.get<any>('https://ecommerce.routemisr.com/api/v1/brands')
+      .subscribe({
+        next: (res) => {
+          this.brands = res.data;
+          this.isLoading = false;
+        },
+        error: (err) => {
+          this.isLoading = false;
+        }
+      });
+  }
 }

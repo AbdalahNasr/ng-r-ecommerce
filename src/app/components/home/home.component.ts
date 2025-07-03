@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Product } from 'src/app/shared/interfaces/product';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { EcommerceDataService } from 'src/app/shared/services/ecommerce-data.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -21,15 +22,16 @@ constructor(private _EcommerceDataService:EcommerceDataService,
 products:Product[] = [];
 categories:any[]= [];
 searchTerm:string = '';
-
+private productsSub?: Subscription;
+hoveredIndex: number | null = null;
 
 addCart(id:string):void{
   this._CartService.addToCart(id).subscribe({
-    next:(res)=>{
+    next:(res:any)=>{
       console.log(res);
       this._ToastrService.success(res.message , 'Fresh Cart')
     },
-    error:(err)=>{
+    error:(err:any)=>{
       console.log(err);
       }
   })
@@ -63,32 +65,37 @@ categoriesSliderOptions: OwlOptions = {
 }
 mainSlider: OwlOptions = {
   loop: true,
-  mouseDrag: true,
-  touchDrag: true,
-  pullDrag: false,
+  items: 1,
   dots: true,
-  navSpeed: 700,
-  navText: ['', ''],
-  items:1,
-  autoplay:true,
-  nav: false
-}
-
+  nav: false,
+  margin: 0,
+  stagePadding: 0,
+  autoplay: true,
+  autoplayTimeout: 4000,
+  smartSpeed: 700,
+  responsive: {
+    0: { items: 1 }
+  }
+};
 
 ngOnInit(): void {
-  // get all products
-    this._EcommerceDataService.getAllProducts().subscribe({
-      next:(res)=>{
-        console.log(res);
-        this.products = res.data;
-      }
-    })
-    this._EcommerceDataService.getCategories().subscribe({
-      next:(res)=>{
-        console.log(res);
-        this.categories = res.data;
-      }
-    })
+  // Fetch and cache all products
+  this._EcommerceDataService.fetchAllProducts().subscribe();
+  // Subscribe to products$
+  this.productsSub = this._EcommerceDataService.products$.subscribe((products: Product[]) => {
+    this.products = products;
+  });
+  // Categories fetch remains the same
+  this._EcommerceDataService.getCategories().subscribe({
+    next:(res:any)=>{
+      console.log(res);
+      this.categories = res.data;
+    }
+  })
+}
+
+ngOnDestroy(): void {
+  this.productsSub?.unsubscribe();
 }
 // scrolling
 isButtonVisible = false;

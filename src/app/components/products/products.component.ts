@@ -1,26 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { EcommerceDataService } from 'src/app/shared/services/ecommerce-data.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
-export class ProductsComponent implements OnInit {
-  products = [
-    { name: 'Apple', image: 'assets/images/assortment-citrus-fruits.png', price: 20 },
-    { name: 'Orange Juice', image: 'assets/images/grocery-banner.png', price: 35 },
-    { name: 'Snack Bar', image: 'assets/images/slide-1.jpeg', price: 15 },
-    { name: 'Fresh Veggies', image: 'assets/images/banner-4.jpeg', price: 25 }
-  ];
+export class ProductsComponent implements OnInit, OnDestroy {
+  products: any[] = [];
 
   hoveredIndex: number | null = null;
+  private productsSub?: Subscription;
 
-  constructor() { }
+  constructor(private _EcommerceDataService: EcommerceDataService) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this._EcommerceDataService.fetchAllProducts().subscribe();
+    this.productsSub = this._EcommerceDataService.products$.subscribe((products: any[]) => {
+      this.products = products;
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.productsSub?.unsubscribe();
+  }
 
   addToCart(product: any): void {
     // Placeholder for add to cart logic
-    alert(product.name + ' added to cart!');
+    alert(product.title + ' added to cart!');
   }
 }

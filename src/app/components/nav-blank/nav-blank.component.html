@@ -5,26 +5,37 @@
       <img src="./assets/images/freshcart-logo.svg" alt="FreshCart Logo" class="h-8 w-8">
       <span class="text-2xl font-bold text-neon-green drop-shadow-[0_0_8px_#00ffb2]">FreshCart</span>
     </a>
-    <!-- Nav Links -->
-    <div class="flex items-center gap-6">
+    <!-- Hamburger (mobile only) -->
+    <div class="block lg:hidden">
+      <input id="nav-toggle" type="checkbox" class="hidden peer" />
+      <label for="nav-toggle" class="cursor-pointer text-neon-blue" title="Open navigation" aria-label="Open navigation">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </label>
+    </div>
+    <!-- Nav Links (desktop only) -->
+    <div class="hidden lg:flex items-center gap-6">
       <a routerLink="/home" routerLinkActive="text-neon-pink" class="text-neon-blue font-semibold hover:text-neon-pink transition">Home</a>
       <a routerLink="/cart" routerLinkActive="text-neon-pink" class="text-neon-blue font-semibold hover:text-neon-pink transition">Cart</a>
       <a routerLink="/products" routerLinkActive="text-neon-pink" class="text-neon-blue font-semibold hover:text-neon-pink transition">Products</a>
       <a routerLink="/categories" routerLinkActive="text-neon-pink" class="text-neon-blue font-semibold hover:text-neon-pink transition">Categories</a>
       <a routerLink="/brands" routerLinkActive="text-neon-pink" class="text-neon-blue font-semibold hover:text-neon-pink transition">Brands</a>
       <a routerLink="/settings" routerLinkActive="text-neon-pink" class="text-neon-blue font-semibold hover:text-neon-pink transition">Settings</a>
+      <button (click)="logOutUser()" class="ml-4 neon-btn px-4 py-1">Logout</button>
     </div>
-    <!-- Social Icons & Auth -->
-    <div class="flex items-center gap-4">
-      <a href="#" class="text-neon-blue hover:text-neon-pink text-xl"><i class="fab fa-instagram"></i></a>
-      <a href="#" class="text-neon-blue hover:text-neon-pink text-xl"><i class="fab fa-facebook"></i></a>
-      <a href="#" class="text-neon-blue hover:text-neon-pink text-xl"><i class="fab fa-tiktok"></i></a>
-      <a href="#" class="text-neon-blue hover:text-neon-pink text-xl"><i class="fab fa-twitter"></i></a>
-      <a href="#" class="text-neon-blue hover:text-neon-pink text-xl"><i class="fab fa-linkedin-in"></i></a>
-      <a href="#" class="text-neon-blue hover:text-neon-pink text-xl"><i class="fab fa-youtube"></i></a>
-      <a routerLink="/login" routerLinkActive="text-neon-pink" class="ml-4 neon-btn px-4 py-1">Login</a>
-      <a routerLink="/register" routerLinkActive="text-neon-pink" class="neon-btn px-4 py-1">Register</a>
-      </div>
+  </div>
+  <!-- Mobile Nav Dropdown (pure Tailwind, no TS) -->
+  <div class="lg:hidden bg-glass border-t border-neon-blue shadow-neon hidden peer-checked:block transition-all duration-300" style="margin-top:-1px">
+    <div class="flex flex-col gap-2 py-4 px-6">
+      <a routerLink="/home" routerLinkActive="text-neon-pink" class="text-neon-blue font-semibold hover:text-neon-pink transition py-2">Home</a>
+      <a routerLink="/cart" routerLinkActive="text-neon-pink" class="text-neon-blue font-semibold hover:text-neon-pink transition py-2">Cart</a>
+      <a routerLink="/products" routerLinkActive="text-neon-pink" class="text-neon-blue font-semibold hover:text-neon-pink transition py-2">Products</a>
+      <a routerLink="/categories" routerLinkActive="text-neon-pink" class="text-neon-blue font-semibold hover:text-neon-pink transition py-2">Categories</a>
+      <a routerLink="/brands" routerLinkActive="text-neon-pink" class="text-neon-blue font-semibold hover:text-neon-pink transition py-2">Brands</a>
+      <a routerLink="/settings" routerLinkActive="text-neon-pink" class="text-neon-blue font-semibold hover:text-neon-pink transition py-2">Settings</a>
+      <button (click)="logOutUser()" class="mt-2 neon-btn px-4 py-1 w-full">Logout</button>
     </div>
-  </nav>
+  </div>
+</nav>
 <div class="h-16"></div> <!-- Spacer for fixed navbar -->

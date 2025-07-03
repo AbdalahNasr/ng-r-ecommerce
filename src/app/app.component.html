@@ -1,4 +1,5 @@
 <!-- Home , cart  -->
 <!--   login register -->
  <!-- <app-nav-auth></app-nav-auth> -->
-  <router-outlet></router-outlet>
+<app-loader [isLoading]="(isLoading | async) ?? false"></app-loader>
+<router-outlet></router-outlet>
