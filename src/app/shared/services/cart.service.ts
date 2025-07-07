@@ -8,11 +8,11 @@ import { Observable } from 'rxjs';
 export class CartService {
 
   constructor(private _HttpClient:HttpClient) { }
-  // headers:any ={ token : localStorage.getItem('Token')}   
+  // headers:any ={ token : localStorage.getItem('Token')}
   addToCart(productId:string):Observable<any>{
   // let bodyObject:object={
   //   "productId":''
-  
+
   // }
 
 return this._HttpClient.post(`https://ecommerce.routemisr.com/api/v1/cart`,{
@@ -30,14 +30,14 @@ getUserCart():Observable<any>{
 
 removeItem(productId:string):Observable<any>{
   return this._HttpClient.delete(`https://ecommerce.routemisr.com/api/v1/cart/${productId}`,
-   
+
   )
 }
          updateCartProduct(productId:string,newCount:number):Observable<any>{
           return this._HttpClient.put(`https://ecommerce.routemisr.com/api/v1/cart/${productId}`,{
             count:newCount
           })
-            
+
 
 
 
@@ -48,9 +48,13 @@ removeItem(productId:string):Observable<any>{
            {
             shippingAddress:userData
            })
-            
 
 
 
+
+         }
+
+         clearCart(): Observable<any> {
+           return this._HttpClient.delete('https://ecommerce.routemisr.com/api/v1/cart');
          }
         }

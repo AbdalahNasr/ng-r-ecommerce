@@ -36,6 +36,10 @@ export class EcommerceDataService {
   getProductSpecificDetails(id: string): Observable<any> {
     return this._HttpClient.get(`https://ecommerce.routemisr.com/api/v1/categories/${id}`);
   }
+
+  getProductsPaginated(page: number = 1, limit: number = 20): Observable<any> {
+    return this._HttpClient.get<any>(`https://ecommerce.routemisr.com/api/v1/products?page=${page}&limit=${limit}`);
+  }
 }
 
 

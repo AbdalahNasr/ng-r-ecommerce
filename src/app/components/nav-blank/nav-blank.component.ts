@@ -11,6 +11,10 @@ export class NavBlankComponent {
 
   constructor(private _AuthService:AuthService){}
 
+  get isLoggedIn(): boolean {
+    return !!localStorage.getItem('Token');
+  }
+
   logOutUser():void{
     this._AuthService.logOut()
   }

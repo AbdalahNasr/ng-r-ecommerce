@@ -18,7 +18,7 @@
     <div class="flex justify-between text-white mb-1"><span>VAT (14%)</span><span>{{vat | currency:'EGP'}}</span></div>
     <hr class="my-2 border-neon-blue opacity-40" />
     <div class="flex justify-between text-lg font-bold"><span class="text-white">TOTAL</span><span class="text-neon-green">{{total | currency:'EGP'}}</span></div>
-    <button class="pay-btn btn-lg border-2 border-neon-purple bg-transparent font-bold text-lg w-full flex items-center justify-center gap-2 text-neon-blue rounded-full hover:bg-neon-blue hover:text-white hover:border-neon-blue mt-4">
+    <button routerLink="/pay" class="pay-btn btn-lg border-2 border-neon-purple bg-transparent font-bold text-lg w-full flex items-center justify-center gap-2 text-neon-blue rounded-full hover:bg-neon-blue hover:text-white hover:border-neon-blue mt-4">
       <span class="btn-text">Pay</span>
       <img src="assets/images/visa-1.svg" alt="Visa" class="h-6 ml-2" />
     </button>

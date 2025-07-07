@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,7 +18,7 @@ import { NavBlankComponent } from './components/nav-blank/nav-blank.component';
 import { NavAuthComponent } from './components/nav-auth/nav-auth.component';
 import { AuthLayoutComponent } from './components/auth-layout/auth-layout.component';
 import { BlankLayoutComponent } from './components/blank-layout/blank-layout.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { CarouselModule } from 'ngx-owl-carousel-o';
@@ -30,6 +31,7 @@ import { MyHttpInterceptor } from './my-http.interceptor';
 import { OrderSummaryComponent } from './components/order-summary/order-summary.component';
 import { LoaderComponent } from './shared/components/loader/loader.component';
 import { CategoryProductsComponent } from './components/category-products/category-products.component';
+import { PayComponent } from './pay/pay.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,15 +56,16 @@ import { CategoryProductsComponent } from './components/category-products/catego
     OrderSummaryComponent,
     LoaderComponent,
     CategoryProductsComponent,
+    PayComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     CarouselModule,
-    FormsModule,
     ToastrModule.forRoot()
 
 

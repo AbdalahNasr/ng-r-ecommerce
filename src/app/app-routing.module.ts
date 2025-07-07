@@ -17,6 +17,7 @@ import { AllordersComponent } from './components/allorders/allorders.component';
 import { UpdatepasswordComponent } from './settings/updatepassword/updatepassword.component';
 import { ForgetpasswordComponent } from './settings/forgetpassword/forgetpassword.component';
 import { CategoryProductsComponent } from './components/category-products/category-products.component';
+import { PayComponent } from './pay/pay.component';
 
 const routes: Routes = [
   {path:'',
@@ -32,7 +33,8 @@ const routes: Routes = [
       {path:'brands',component:BrandsComponent},
       {path:'categories',component:CategoriesComponent},
       {path:'categories/:id',component:CategoryProductsComponent},
-      {path:'allorders',component:AllordersComponent}
+      {path:'allorders',component:AllordersComponent},
+      {path:'pay',component:PayComponent}
     ]
   },
   {path:'',component:AuthLayoutComponent ,

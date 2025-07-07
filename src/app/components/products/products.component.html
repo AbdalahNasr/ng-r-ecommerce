@@ -29,5 +29,10 @@
       </div>
     </div>
   </div>
+  <div class="flex justify-center items-center mt-10 gap-4">
+    <button (click)="prevPage()" [disabled]="currentPage === 1" class="px-4 py-2 rounded bg-neon-blue text-white font-bold disabled:opacity-50">Previous</button>
+    <span class="text-white font-semibold">Page {{currentPage}} of {{totalPages}}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages" class="px-4 py-2 rounded bg-neon-blue text-white font-bold disabled:opacity-50">Next</button>
+  </div>
 </section>
 <!-- Mock data for demo; replace with real data from service in TS file -->

@@ -1,0 +1,186 @@
+/* Center the card in the page */
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  width: 100%;
+}
+
+/* From Uiverse.io by vinodjangid07 */
+.visa-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  width: 450px;
+  min-height: 160px;
+  height: auto;
+  background-image: radial-gradient(
+    circle 897px at 9% 80.3%,
+    rgba(55, 60, 245, 1) 0%,
+    rgba(234, 161, 15, 0.9) 100.2%
+  );
+  border-radius: 16px;
+  padding: 20px;
+  padding-top: 36px;
+  font-family: Arial, Helvetica, sans-serif;
+  position: relative;
+  gap: 24px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  box-sizing: border-box;
+}
+.logoContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: fit-content;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 24px;
+  z-index: 1;
+  pointer-events: none;
+}
+.svgLogo {
+  height: 56px;
+  width: auto;
+}
+.inputstyle::placeholder {
+  color: #ffffff;
+}
+.inputstyle {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 18px;
+  color: #fff;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+  margin-bottom: 8px;
+}
+.inputstyle:-webkit-autofill,
+.inputstyle:-webkit-autofill:focus,
+.inputstyle:-webkit-autofill:hover,
+.inputstyle:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+  box-shadow: 0 0 0 1000px transparent inset !important;
+  -webkit-text-fill-color: #fff !important;
+  caret-color: #fff;
+  transition: background-color 5000s ease-in-out 0s;
+}
+.number-container, .name-date-cvv-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  z-index: 2;
+}
+#cardNumber {
+  width: 100%;
+  height: 36px;
+}
+.name-date-cvv-container {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+.name-wrapper {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+}
+.expiry-wrapper {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+}
+.cvv-wrapper {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+}
+#expiry,
+#cvv {
+  width: 100%;
+}
+.input-label {
+  font-size: 10px;
+  color: #b0b0b0;
+  margin-bottom: 2px;
+  letter-spacing: 1.2px;
+}
+.pay-btn-styled {
+  font-size: 18px;
+  color: #fff;
+  font-weight: 500;
+  margin-top: 0px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+.pay-btn-styled:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.pay-btn-styled:hover:not(:disabled) {
+  color: #eaa10f;
+  background: none;
+  box-shadow: none;
+}
+.card-element-style {
+  background: transparent;
+  border: 2px solid #fff;
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-size: 18px;
+  color: #fff;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 44px;
+  letter-spacing: 2px;
+}
+.pay-message {
+  text-align: center;
+  margin-top: 18px;
+  color: #fff;
+  font-size: 16px;
+  min-height: 24px;
+}
+.card-number-row {
+  width: 100%;
+  margin: 8px 0 8px 0;
+}
+.card-number-input {
+  font-size: 20px;
+  letter-spacing: 3px;
+  width: 100%;
+  margin-top: 2px;
+  margin-bottom: 4px;
+}
+.card-bottom-row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 6px;
+}
+.card-name-block {
+  width: 50%;
+}
+.card-details-block {
+  width: 45%;
+  display: flex;
+  gap: 12px;
+}
+.card-details-block > div {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}

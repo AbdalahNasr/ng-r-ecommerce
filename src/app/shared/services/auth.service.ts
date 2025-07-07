@@ -13,24 +13,23 @@ export class AuthService {
 userData:any ;
 
 logOut():void{
-  localStorage.removeItem('Token');
-  // redirect to login 
+  localStorage.clear(); // Clear all local storage
+  sessionStorage.clear(); // Clear all session storage
+  // redirect to login
   this._Router.navigate(['/login'])
-
-
 }
 
 
 
 saveUserData(){
   if (localStorage.getItem('Token') != null) { // token decode
-    let encodedToken:any  =localStorage.getItem('Token') 
+    let encodedToken:any  =localStorage.getItem('Token')
    let decodeToken =  jwtDecode(encodedToken)
    this.userData = decodeToken
    console.log(decodeToken);
-   
+
   }
-  
+
 }
 
   setRegister(userData:object):Observable<any>{
